@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
+             version="3.0">
+    <persistence-unit name="default">
+        <class>com.sanalberto.svp.daos.Issue</class>
+        <properties>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://dbWeb:3306/samapp"/>
+            <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+            <property name="jakarta.persistence.jdbc.user" value="root"/>
+            <property name="jakarta.persistence.jdbc.password" value="admin"/>
+            <!-- Para que cuando se ejecute un método de hibernate que interactúa con la base de datos
+             me muestre por pantalla el sql que se ha autogenerado-->
+            <property name="hibernate.show_sql" value="true"/>
+            <!--para que hibernate cree las tablas a partir de las anotaciones EN LA BASE DE DATOS de la conexión-->
+            <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
+            <property name="jakarta.persistence.schema-generation.create-source" value="metadata"/>
+            <property name="jakarta.persistence.schema-generation.drop-source" value="metadata"/>
+
+            <!--archivo sql con los datos de prueba a cargar>
+            <property name="jakarta.persistence.sql-load-script-source" value="data.sql"/-->
+
+            <!-- Logging ->
+            <property name="openjpa.Log" value="DefaultLevel=WARN, Runtime=INFO, Tool=INFO, SQL=TRACE"/>
+            <property name="openjpa.ConnectionFactoryProperties" value="PrintParameters=true"/-->
+        </properties>
+
+    </persistence-unit>
+</persistence>

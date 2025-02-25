@@ -1,0 +1,41 @@
+
+services:
+ web:
+  image: tomee:10.0.0-jre21-Temurin-ubuntu-plus
+  ports:
+    - "8088:8080"
+  networks:
+    - app-network
+  volumes:
+    - ./../target/AppSAMAPI-1.0-SNAPSHOT.war:/usr/local/tomee/webapps/samapi.war
+  environment:
+      - MYSQL_HOST=dbWeb
+      - MYSQL_PORT=3309
+      - MYSQL_DATABASE=samapp
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=admin
+  depends_on:
+      - dbWeb
+
+
+ dbWeb:
+  image: mysql:latest
+  container_name: dbweb
+  environment:
+   MYSQL_ROOT_PASSWORD: admin
+   MYSQL_DATABASE: samapp
+   MYSQL_PASSWORD: admin
+  ports:
+    - "3309:3306"
+  networks:
+    - app-network
+  volumes:
+   - dbWeb:/var/lib/mysql
+
+volumes:
+ web:
+ dbWeb:
+
+networks:
+  app-network:
+    driver: bridge
