@@ -10,7 +10,7 @@ services:
     - ./../target/AppSAMAPI-1.0-SNAPSHOT.war:/usr/local/tomee/webapps/samapi.war
   environment:
       - MYSQL_HOST=dbWeb
-      - MYSQL_PORT=3309
+      - MYSQL_PORT=3306
       - MYSQL_DATABASE=samapp
       - MYSQL_USER=root
       - MYSQL_PASSWORD=admin
