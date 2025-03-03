@@ -7,7 +7,7 @@ services:
   networks:
     - app-network
   volumes:
-    - ./../target/AppSAMAPI-1.0-SNAPSHOT.war:/usr/local/tomee/webapps/samapi.war
+    - ./target/AppSAMAPI-1.0-SNAPSHOT.war:/usr/local/tomee/webapps/samapi.war
   environment:
       - MYSQL_HOST=dbWeb
       - MYSQL_PORT=3306
